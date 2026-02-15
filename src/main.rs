@@ -2,6 +2,7 @@
 #![no_std]
 
 use cortex_m_rt::entry;
+use embedded_graphics::{prelude::Point, primitives::{Circle, Line}};
 use embedded_hal_bus::spi::{ExclusiveDevice};
 use gc9a01::{Gc9a01, mode::DisplayConfiguration};
 use microbit::{
@@ -80,6 +81,16 @@ fn init() -> ! {
     }
 
     // With embedded graphics
+
+    // Add buffered graphics for embedded-graphics support
+    display.into_buffered_graphics();
+
+    // let mut points: [(i32, i32, i32); 1] = [(0, 0, 0)];
+
+    // for p in points {
+    //     Line::new(Point{x: p.0, y: p.1}, Point{x: p.0, y: p.1});
+    // }
+
     
 
     loop {}
