@@ -31,7 +31,7 @@ fn main() -> ! {
 
     // Setup SPI 
     let sck = port0.p0_17.into_push_pull_output(Level::Low).degrade();
-    let mosi = port0.p0_13.into_push_pull_output(Level::Low).degrade();
+    let coti = port0.p0_13.into_push_pull_output(Level::Low).degrade();
 
     let dc = port0.p0_10.into_push_pull_output(Level::Low);
     let cs = port0.p0_12.into_push_pull_output(Level::Low);
@@ -41,7 +41,7 @@ fn main() -> ! {
         peripherals.SPIM0,
         microbit::hal::spim::Pins {
             sck: Some(sck),
-            mosi: Some(mosi),
+            mosi: Some(coti),
             miso: None,
         },
         Frequency::M16,
