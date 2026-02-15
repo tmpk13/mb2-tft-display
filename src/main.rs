@@ -63,22 +63,8 @@ fn main() -> ! {
     display.init(&mut timer0).unwrap();
     display.clear().unwrap();
 
-
-    // Conflict with display.clear from embedded graphics
-    // Using rect as background
-    let bg_rect_style = PrimitiveStyleBuilder::new()
-        .fill_color(Rgb565::WHITE)
-        .build();
-    Rectangle::new(
-        Point { x: 0, y: 0 },
-        Size {
-            width: 240,
-            height: 240,
-        },
-        )
-        .into_styled(bg_rect_style)
-        .draw(&mut display)
-        .unwrap();
+    // Call `embedded_graphics` `clear()` trait method
+    <_ as embedded_graphics::draw_target::DrawTarget>::clear(&mut display, Rgb565::WHITE).unwrap();
 
     // Draw small rect
     let rect_style = PrimitiveStyleBuilder::new()
