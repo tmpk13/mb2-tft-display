@@ -60,39 +60,8 @@ fn init() -> ! {
     ).into_buffered_graphics();
     display.reset(&mut rst, &mut timer0);
     display.init(&mut timer0).unwrap();
+    display.clear();
 
-    // Without embedded graphics
-    // let mut grad: [u16; 240 * 240] = [0; 240 * 240];
-
-    // fn gradient(grad: &mut [u16; 240 * 240], start: usize, end: usize, shift: usize) {
-    //     for i in start..end {
-    //         for j in 0..240 {
-    //             grad[i * 240 + j] = (((end - i) * 32 / (end - start)) as u16) << shift;
-    //         }
-    //     }
-    // }
-
-    // gradient(&mut grad, 0, 240 / 3, 0);
-    // gradient(&mut grad, 240 / 3, (240 / 3) * 2, 5);
-    // gradient(&mut grad, (240 / 3) * 2, 240, 11);
-
-    // match display.bounded_draw(&grad, 240, (0, 0), (239, 239)) {
-    //     Ok(_) => {}
-    //     Err(e) => {
-    //         rprintln!("{:?}", e);
-    //     }
-    // }
-
-    // With embedded graphics
-
-    // Add buffered graphics for embedded-graphics support
-    // let mut buffered_display = display.into_buffered_graphics();
-
-    // let mut points: [(i32, i32, i32); 1] = [(0, 0, 0)];
-
-    // for p in points {
-    //     Line::new(Point{x: p.0, y: p.1}, Point{x: p.0, y: p.1});
-    // }
     let rect_style = PrimitiveStyleBuilder::new()
         .fill_color(Rgb565::BLUE)
         .build();
