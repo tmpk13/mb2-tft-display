@@ -1,6 +1,7 @@
 #![no_main]
 #![no_std]
 
+use cortex_m::asm;
 use cortex_m_rt::entry;
 use embedded_graphics::{
     Drawable,
@@ -82,5 +83,7 @@ fn main() -> ! {
         .unwrap();
 
 
-    loop {}
+    loop {
+        asm::wfe();
+    }
 }
