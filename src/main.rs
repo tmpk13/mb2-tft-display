@@ -81,7 +81,7 @@ fn init() -> ! {
 
     gradient(&mut grad, 0, 240/3, 0);
     gradient(&mut grad, 240/3, (240/3)*2, 5);
-    gradient(&mut grad, (240/2)*2, 240, 11);
+    gradient(&mut grad, (240/3)*2, 240, 11);
 
     match display.bounded_draw(&grad, 240, (0, 0), (239, 239)) {
         Ok(_) => {}
