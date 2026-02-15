@@ -14,11 +14,6 @@ use panic_rtt_target as _;
 use rtt_target::{rprintln, rtt_init_print};
 
 
-enum State {
-    LedOn,
-    LedOff,
-}
-
 #[entry]
 fn init() -> ! {
     rtt_init_print!();
@@ -65,7 +60,6 @@ fn init() -> ! {
     display.reset(&mut rst, &mut timer0); 
     display.init(&mut timer0).unwrap(); 
 
-    let max: u16 = !0; 
     let mut grad: [u16; 240*240] = [0; 240*240]; 
     
     fn gradient(grad: &mut [u16; 240*240], start: usize, end: usize, shift: usize) {
@@ -75,8 +69,6 @@ fn init() -> ! {
             } 
         } 
     }
-
-    
 
     gradient(&mut grad, 0, 240/3, 0);
     gradient(&mut grad, 240/3, (240/3)*2, 5);
