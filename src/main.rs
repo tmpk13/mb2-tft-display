@@ -37,13 +37,13 @@ fn main() -> ! {
     let mut rst = board.edge.e09.into_push_pull_output(Level::High);
 
     let spi_bus = Spim::new(
-        board.SPIM3,
+        board.SPIM0,
         microbit::hal::spim::Pins {
             sck: Some(sck),
             mosi: Some(coti),
             miso: None,
         },
-        Frequency::M32,
+        Frequency::M8,
         spim::MODE_0,
         0xFF, // ORC overflow character
     );
